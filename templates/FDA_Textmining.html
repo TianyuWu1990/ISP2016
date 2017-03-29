@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+          rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h3 class="text-muted">Upload Requested Files into MEFA System</h3>
+      </div>
+      <hr/>
+      <div>
+
+      <form action="upload" method="post" enctype="multipart/form-data">
+          <p>Upload RawTextFile: (Must be utf-8 format)</p>
+          <input type="file" name="file_Raw"><br /><br />
+          <p>Upload ConfigFile: (Must be a json file)</p> 
+          <input type="file" name="file_Con"> <br /><br />
+
+        <input type="submit" value="Start Processing">
+      </form>
+      </div>
+    </div>
+  </body>
+</html>

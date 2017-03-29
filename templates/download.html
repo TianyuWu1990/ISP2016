@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+          rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h3 class="text-muted">MEFA Process Done!</h3>
+      </div>
+
+      <hr/>
+      <div class="note">
+          <a href="/return-ageset/" target="blank" ><button class='btn btn-default'style="background-color:powderblue; ">Age</button></a>
+
+          <a href="/return-drug/" target="blank" ><button class='btn btn-default'style="background-color:Bisque ;">DrugName</button></a>
+
+          <a href="/return-eventdate/" target="blank" ><button class='btn btn-default'style="background-color:Chartreuse ;">EventDate</button></a>
+
+          <a href="/return-gender/" target="blank" ><button class='btn btn-default'style="background-color:DarkGray ;">Gender</button></a>
+
+          <a href="/return-weight/" target="blank" ><button class='btn btn-default'style="background-color:HotPink;">Weight</button></a>
+
+        <a href="/return-files/"  target="blank" style="float: right"><button class='btn btn-default'>Download Output XML</button></a>
+        <br /><br /><br/><br />
+
+
+      </div>
+
+
+      <div class=""textfield>
+          <span style="background-color:powderblue; ">Age:   </span><span style="background-color:white; ">   {{age_info}}</span></br>
+
+          <span style="background-color:Bisque ;">Drugname:   </span><span style="background-color:white; ">{{drug_info}}</span></br>
+
+          <span style="background-color:Chartreuse; ">EventDate:   </span><span style="background-color:white; ">   {{event_info}}</span></br>
+
+          <span style="background-color:DarkGray; ">Gender:   </span><span style="background-color:white; ">   {{gender_info}}</span></br>
+
+          <span style="background-color:HotPink; ">Weight:   </span><span style="background-color:white; ">   {{weight_info}}</span></br>
+            <br/><br />
+
+        <div>
+                <pre id="inputText">{{text}}</pre>
+        </div>
+          </div>
+        </div>
+
+  <script>
+
+window.onload =function highlight()
+{
+    var inputText = document.getElementById("inputText")
+    var innerHTML = inputText.innerHTML
+    //just to declare passing variable, it have to, no other use
+    index = Number('{{age_offsets}}')
+    index2 = Number('{{age_offsets_end}}')
+    index3 = Number('{{event_offsets}}')
+    index4 = Number('{{event_offsets_end}}')
+    index5 = Number('{{gender_offsets}}')
+    index6 = Number('{{gender_offsets_end}}')
+    index7 = Number('{{weight_offsets_end}}')
+    index8 = Number('{{weight_offsets}}')
+    if('{{weight_info}}'== ''){
+    }
+    else{
+        innerHTML = innerHTML.substring(0,{{weight_offsets}}) + "<span class='highlight' style='background-color: HotPink'>" + innerHTML.substring({{weight_offsets}},{{weight_offsets_end}}) + "</span>" + innerHTML.substring({{weight_offsets_end}});}
+
+
+    var drug_info = '{{drug_info}}'
+    while(drug_info.length>3){
+        var drugname = drug_info.substring(0,drug_info.search(' '))
+        var drug_start = innerHTML.indexOf(drugname)
+        innerHTML = innerHTML.substring(0,drug_start) + "<span class='highlight' style='background-color: Bisque'>" + innerHTML.substring(drug_start,drug_start+drugname.length) + "</span>" + innerHTML.substring(drug_start+drugname.length);
+        drug_info = drug_info.substring(drug_info.search(' ')+3)
+
+    }
+    if('{{gender_info}}' != ''){
+    innerHTML = innerHTML.substring(0,{{gender_offsets}}) + "<span class='highlight' style='background-color: DarkGray'>" + innerHTML.substring({{gender_offsets}},{{gender_offsets_end}}) + "</span>" + innerHTML.substring({{gender_offsets_end}});}
+    if('{{age_info}}' != ''){
+    innerHTML = innerHTML.substring(0,{{age_offsets}}) + "<span class='highlight' style='background-color: powderblue'>" + innerHTML.substring({{age_offsets}},{{age_offsets_end}}) + "</span>" + innerHTML.substring({{age_offsets_end}});}
+    if('{{event_info}}' != ''){
+    innerHTML = innerHTML.substring(0,{{event_offsets}}) + "<span class='highlight'style='background-color: Chartreuse'>" + innerHTML.substring({{event_offsets}},{{event_offsets_end}}) + "</span>" + innerHTML.substring({{event_offsets_end}});}
+
+    inputText.innerHTML = innerHTML
+
+
+
+
+}
+
+</script>
+
+
+
+<style>
+.highlight
+{
+
+}
+</style>
+
+
+
+  </body>
+
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+          rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h3 class="text-muted">MEFA Process Done!</h3>
+      </div>
+      <hr/>
+      <div class="note">
+        <button onclick="age()" style="background-color:powderblue; ">Age</button>
+        <a class="dosage" style="background-color:Aquamarine ;">Dosage</a>
+        <a class="drugname" style="background-color:Bisque ;">Drugname</a>
+        <a class="eventdate" style="background-color:Chartreuse ;">EventDate</a>
+        <a class="feature" style="background-color:Coral ;">Feature</a>
+        <a class="gender" style="background-color:DarkGray ;">Gender</a>
+        <a class="reaction" style="background-color:DarkOrchid ;">Reaction</a>
+        <a class="weight" style="background-color:HotPink;">Weight</a>
+        <a href="/return-files/" target="blank" style="float: right"><button class='btn btn-default'>Download Output XML</button></a>
+        <br /><br /><br/><br />
+      </div>
+      <div class=""textfield>
+
+        <div id="inputText">he is 13 years old.
+Abacavir Sulfate
+Abarelix
+Abatacept
+Abciximab
+Abelcet
+Abilify
+Abraxane
+Acamprosate Calcium
+Acarbose
+Accolate
+Accretropin
+AccuNeb
+Accupril
+Accutane
+Acebutolol
+Aceon
+Acetadote
+Acetaminophen
+Acetic Acid
+Aci-Jel
+He is a boy.
+</div>
+
+
+          <script>
+              function age() {
+
+                var request = new XMLHttpRequest();
+		        request.onload = this.readStringFromFileAtPath_OnLoad.bind(this, callback);
+		        request.open("GET", /Users/wutianyu/ISP2016, true);
+                alert(request)
+		        request.send();
+
+
+              }
+          </script>
+          <button onclick="highlight()">Highlight</button>
+
+
+
+
+
+        <script>
+
+
+          function highlight(text) {
+
+            var rawFile = new XMLHttpRequest();
+            rawFile.open("GET", age.txt, true);
+//            var allText = rawFile.responseText;
+//            rawFile.onreadystatechange = function ()
+//    {
+//        if(rawFile.readyState === 4)
+//        {
+//            if(rawFile.status === 200 || rawFile.status == 0)
+//            {
+//                var allText = rawFile.responseText;
+////                alert(allText);
+//            }
+//        }
+//    }
+//    rawFile.send(null);
+
+
+            var text = '13'
+
+
+            inputText = document.getElementById("inputText")
+
+            var innerHTML = inputText.innerHTML
+
+            var index = innerHTML.indexOf(text);
+
+            if (index >= 0) {
+
+              innerHTML = innerHTML.substring(0, index) + "<span class='highlight'>" + innerHTML.substring(index, index + text.length) + "</span>" + innerHTML.substring(index + text.length);
+
+              inputText.innerHTML = innerHTML
+
+            }
+          }
+          </script>
+
+
+
+
+
+<style>
+.highlight
+{
+background-color:yellow;
+}
+</style>
+
+          <script>
+
+          </script>
+
+      </div>
+    </div>
+  </body>
+
+
+</html>
